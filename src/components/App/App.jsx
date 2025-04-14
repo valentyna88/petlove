@@ -1,21 +1,29 @@
 import { Route, Routes } from 'react-router-dom';
-import HomePage from '../../pages/HomePage/HomePage';
-import NewsPage from '../../pages/NewsPage/NewsPage';
-import NoticesPage from '../../pages/NoticesPage/NoticesPage';
-import OurFriendsPage from '../../pages/OurFriendsPage/OurFriendsPage';
-import RegistrationPage from '../../pages/RegistrationPage/RegistrationPage';
-import LoginPage from '../../pages/LoginPage/LoginPage';
-import ProfilePage from '../../pages/ProfilePage/ProfilePage';
-import AddPetPage from '../../pages/AddPetPage/AddPetPage';
-import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
+import { lazy } from 'react';
 import Layout from '../../components/Layout';
 // import './App.module.css';
+
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
+const NewsPage = lazy(() => import('../../pages/NewsPage/NewsPage'));
+const NoticesPage = lazy(() => import('../../pages/NoticesPage/NoticesPage'));
+const OurFriendsPage = lazy(() =>
+  import('../../pages/OurFriendsPage/OurFriendsPage')
+);
+const RegistrationPage = lazy(() =>
+  import('../../pages/RegistrationPage/RegistrationPage')
+);
+const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage'));
+const ProfilePage = lazy(() => import('../../pages/ProfilePage/ProfilePage'));
+const AddPetPage = lazy(() => import('../../pages/AddPetPage/AddPetPage'));
+const NotFoundPage = lazy(() =>
+  import('../../pages/NotFoundPage/NotFoundPage')
+);
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} redirectTo="/home" />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/notices" element={<NoticesPage />} />
         <Route path="/friends" element={<OurFriendsPage />} />
