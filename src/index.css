@@ -34,9 +34,11 @@
 }
 
 body {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: 'Manrope', 'Inter', sans-serif;
+  line-height: 1.29;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  background-color: var(--bg-primary);
   margin: 0;
 }
 h1,
