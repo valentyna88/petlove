@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 import Layout from '../../components/Layout';
 // import './App.module.css';
@@ -23,16 +23,17 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/news" element={<NewsPage />} />
-        <Route path="/notices" element={<NoticesPage />} />
-        <Route path="/friends" element={<OurFriendsPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/add-pet" element={<AddPetPage />} />
+        <Route index element={<Navigate to="/home" />} />
+        <Route path="home" element={<HomePage />} />
+        <Route path="news" element={<NewsPage />} />
+        <Route path="notices" element={<NoticesPage />} />
+        <Route path="friends" element={<OurFriendsPage />} />
+        <Route path="register" element={<RegistrationPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="profile" element={<ProfilePage />} />
+        <Route path="add-pet" element={<AddPetPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
-      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
