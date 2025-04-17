@@ -1,0 +1,20 @@
+.header {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 0 40px;
+}
+
+@media screen and (min-width: 1280px) {
+  .homeHeader {
+    /* position: absolute; */
+    top: 16px;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+    background-color: transparent;
+    margin: 0 auto;
+  }
+}
