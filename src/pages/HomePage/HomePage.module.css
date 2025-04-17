@@ -1,0 +1,86 @@
+.titleBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  background-color: var(--color-accent);
+  border-radius: 60px;
+  padding-block: 60px 50px;
+  padding-inline: 20px;
+}
+.title {
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  color: var(--bg-secondary);
+}
+.span {
+  color: var(--color-text-span-light);
+}
+.text {
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.02em;
+  color: var(--bg-secondary);
+}
+.bg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 60px;
+  width: 100%;
+  max-width: 1216px;
+  margin: 0 auto;
+  height: 402px;
+  background-image: image-set(
+    url('../../assets/images/home/kiss_dog@1x-mobile.jpg') 1x,
+    url('../../assets/images/home/kiss_dog@2x-mobile.jpg') 2x
+  );
+}
+
+@media screen and (min-width: 768px) {
+  .titleBox {
+    gap: 32px;
+    padding: 123px 32px 44px;
+    padding-block: 123px 44px;
+    padding-inline: 32px;
+  }
+  .title {
+    font-size: 80px;
+  }
+  .text {
+    font-size: 18px;
+    line-height: 1.22;
+    width: 255px;
+    align-self: flex-end;
+  }
+  .bg {
+    height: 496px;
+    background-image: image-set(
+      url('../../assets/images/home/kiss_dog@1x-tablet.jpg') 1x,
+      url('../../assets/images/home/kiss_dog@2x-tablet.jpg') 2x
+    );
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .titleBox {
+    flex-direction: row;
+    gap: 73px;
+    padding-block: 112px 32px;
+    padding-inline: 64px;
+  }
+  .title {
+    width: 760px;
+    font-size: 90px;
+    line-height: 0.97;
+  }
+  .bg {
+    height: 384px;
+    background-image: image-set(
+      url('../../assets/images/home/kiss_dog@1x-desktop.jpg') 1x,
+      url('../../assets/images/home/kiss_dog@2x-desktop.jpg') 2x
+    );
+  }
+}
