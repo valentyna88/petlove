@@ -8,12 +8,20 @@
     max-width: 375px;
     padding: 0 20px;
   }
+  .padding-vertical {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
     padding: 0 32px;
+  }
+  .padding-vertical {
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
 }
 
