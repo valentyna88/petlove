@@ -1,0 +1,25 @@
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 218px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-secondary);
+  color: var(--color-text-dark);
+  padding-top: 5rem;
+  z-index: 999;
+  gap: 60px;
+}
+.closeButton {
+  position: absolute;
+  top: 28px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  stroke-width: 3px;
+  stroke: var(--color-text-dark);
+}
