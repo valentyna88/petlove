@@ -4,7 +4,7 @@
   justify-content: center;
   gap: 24px;
   background-color: var(--color-accent);
-  border-radius: 60px;
+  border-radius: 30px;
   padding-block: 60px 50px;
   padding-inline: 20px;
 }
@@ -28,7 +28,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  border-radius: 60px;
+  border-radius: 30px;
   width: 100%;
   max-width: 1216px;
   margin: 0 auto;
