@@ -1,14 +1,15 @@
+import { Link } from 'react-router-dom';
 import css from './AuthNav.module.css';
 
 const AuthNav = () => {
   return (
     <div className={css.authNav}>
-      <button type="button" className={css.login}>
+      <Link to="/login" className={css.login}>
         Log In
-      </button>
-      <button type="button" className={css.register}>
+      </Link>
+      <Link to="/register" className={css.register}>
         Registration
-      </button>
+      </Link>
     </div>
   );
 };

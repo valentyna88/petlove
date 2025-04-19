@@ -21,9 +21,22 @@
   background-color: var(--color-accent);
   text-transform: uppercase;
   color: var(--bg-secondary);
+  border: 1px solid var(--color-text-span-light);
 }
 .register {
   padding: 12px 41px;
   background-color: var(--bg-accent-yellow);
   color: var(--color-accent);
+}
+
+@media screen and (min-width: 768px) {
+  .authNav {
+    flex-direction: row;
+  }
+  .login,
+  .register {
+    padding: 15px 39px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
 }
