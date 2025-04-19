@@ -1,0 +1,29 @@
+.authNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.login,
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  border-radius: 30px;
+}
+.login {
+  padding: 12px 67px;
+  background-color: var(--color-accent);
+  text-transform: uppercase;
+  color: var(--bg-secondary);
+}
+.register {
+  padding: 12px 41px;
+  background-color: var(--bg-accent-yellow);
+  color: var(--color-accent);
+}
