@@ -31,3 +31,24 @@
   stroke-width: 3px;
   stroke: var(--color-text-dark);
 }
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .menu {
+    width: 374px;
+  }
+  .menuContent {
+    margin-top: 200px;
+  }
+  .closeButton {
+    top: 39px;
+    right: 32px;
+  }
+  .icon {
+    width: 22px;
+    height: 22px;
+  }
+}

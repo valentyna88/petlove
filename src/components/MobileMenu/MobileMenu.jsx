@@ -8,7 +8,7 @@ const MobileMenu = ({ closeMenu }) => {
     <div className={css.menu}>
       <div className={css.menuContent}>
         <button className={css.closeButton} type="button" onClick={closeMenu}>
-          <svg width={20} height={20}>
+          <svg className={css.icon}>
             <use href={`${sprite}#icon-cross-small`}></use>
           </svg>
         </button>
