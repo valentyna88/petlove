@@ -6,13 +6,15 @@ import css from './MobileMenu.module.css';
 const MobileMenu = ({ closeMenu }) => {
   return (
     <div className={css.menu}>
-      <button className={css.closeButton} type="button" onClick={closeMenu}>
-        <svg width={20} height={20}>
-          <use href={`${sprite}#icon-cross-small`}></use>
-        </svg>
-      </button>
-      <Nav closeMenu={closeMenu} />
-      <AuthNav />
+      <div className={css.menuContent}>
+        <button className={css.closeButton} type="button" onClick={closeMenu}>
+          <svg width={20} height={20}>
+            <use href={`${sprite}#icon-cross-small`}></use>
+          </svg>
+        </button>
+        <Nav closeMenu={closeMenu} />
+        <AuthNav />
+      </div>
     </div>
   );
 };

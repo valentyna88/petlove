@@ -13,6 +13,14 @@
   z-index: 999;
   gap: 60px;
 }
+.menuContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 100px 0 40px;
+}
 .closeButton {
   position: absolute;
   top: 28px;
