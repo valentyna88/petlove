@@ -16,8 +16,19 @@
   border: none;
   cursor: pointer;
 }
+.icon {
+  width: 32px;
+  height: 32px;
+}
 .desktopHeader {
   display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .icon {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -31,5 +42,11 @@
     max-width: 100%;
     background-color: transparent;
     margin: 0 auto;
+  }
+  .desktopHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 64px;
   }
 }
