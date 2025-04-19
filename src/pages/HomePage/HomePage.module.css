@@ -45,6 +45,7 @@
     padding: 123px 32px 44px;
     padding-block: 123px 44px;
     padding-inline: 32px;
+    border-radius: 60px;
   }
   .title {
     font-size: 80px;
@@ -57,6 +58,7 @@
   }
   .bg {
     height: 496px;
+    border-radius: 60px;
     background-image: image-set(
       url('../../assets/images/home/kiss_dog@1x-tablet.jpg') 1x,
       url('../../assets/images/home/kiss_dog@2x-tablet.jpg') 2x
