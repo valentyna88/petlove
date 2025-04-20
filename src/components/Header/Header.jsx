@@ -33,15 +33,20 @@ const Header = () => {
         <div className={css.mobileHeader}>
           <Logo icon={isHomePage ? 'icon-logo-white' : 'icon-logo-black'} />
           <button type="button" className={css.hamburger} onClick={toggleMenu}>
-            <svg className={css.icon}>
-              <use href={`${sprite}#icon-burger`}></use>
+            <svg
+              className={clsx(
+                css.icon,
+                isHomePage ? css.whiteIcon : css.blackIcon
+              )}
+            >
+              <use href={`${sprite}#icon-burger`} />
             </svg>
           </button>
         </div>
 
         <div className={css.desktopHeader}>
           <Logo icon={isHomePage ? 'icon-logo-white' : 'icon-logo-black'} />
-          <Nav closeMenu={closeMenu} />
+          <Nav closeMenu={closeMenu} isHomePage={isHomePage} />
           <AuthNav />
         </div>
 

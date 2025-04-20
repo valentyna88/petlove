@@ -15,9 +15,11 @@
   height: 48px;
   font-size: 14px;
   letter-spacing: -0.03em;
+  white-space: nowrap;
 }
 .active {
   border: 1px solid var(--color-accent);
+  color: var(--color-text-dark);
   width: 119px;
   height: 48px;
 }
@@ -38,13 +40,26 @@
     flex-direction: row;
     align-items: center;
   }
-  .link {
+  .link:not(.active) {
+    border: 1px solid var(--color-gray-border);
+  }
+  .link.white {
     border: 1px solid var(--color-text-span-light);
-    font-size: 16px;
-    line-height: 1.25;
     color: var(--bg-secondary);
   }
+  .link {
+    font-size: 16px;
+    line-height: 1.25;
+  }
   .active {
+    border: 1px solid var(--color-accent);
+    color: var(--color-text-dark);
     padding: 15px 40px;
+  }
+  .white {
+    color: var(--bg-secondary);
+  }
+  .black {
+    color: var(--color-text-dark);
   }
 }
