@@ -46,13 +46,25 @@
   .link.white {
     border: 1px solid var(--color-text-span-light);
     color: var(--bg-secondary);
+    transition: border var(--transition);
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--bg-secondary);
+    }
   }
   .link {
     font-size: 16px;
     line-height: 1.25;
+    transition: border var(--transition);
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--color-accent);
+    }
   }
   .active {
-    border: 1px solid var(--color-accent);
+    border: 1px solid var(--bg-secondary);
     color: var(--color-text-dark);
     padding: 15px 40px;
   }

@@ -1,6 +1,11 @@
 .logo {
   width: 76px;
   height: 20px;
+  transition: transform var(--transition);
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 .icon {
   width: 32px;
