@@ -1,3 +1,6 @@
+.authTablet {
+  display: none;
+}
 .header {
   width: 100%;
   /* position: absolute; */
@@ -33,6 +36,12 @@
 }
 .desktopHeader {
   display: none;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .authTablet {
+    display: flex;
+  }
 }
 
 @media screen and (min-width: 768px) {

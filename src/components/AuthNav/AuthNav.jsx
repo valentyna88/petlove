@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import css from './AuthNav.module.css';
+import clsx from 'clsx';
 
-const AuthNav = () => {
+const AuthNav = ({ className = '' }) => {
   return (
-    <div className={css.authNav}>
+    <div className={clsx(css.authNav, className)}>
       <Link to="/login" className={css.login}>
         Log In
       </Link>

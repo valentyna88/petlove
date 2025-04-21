@@ -32,6 +32,7 @@ const Header = () => {
       <Container>
         <div className={css.mobileHeader}>
           <Logo icon={isHomePage ? 'icon-logo-white' : 'icon-logo-black'} />
+          {!isHomePage && <AuthNav className={css.authTablet} />}
           <button type="button" className={css.hamburger} onClick={toggleMenu}>
             <svg
               className={clsx(
@@ -50,7 +51,9 @@ const Header = () => {
           <AuthNav />
         </div>
 
-        {menuOpen && <MobileMenu closeMenu={closeMenu} />}
+        {menuOpen && (
+          <MobileMenu closeMenu={closeMenu} isHomePage={isHomePage} />
+        )}
       </Container>
     </header>
   );
