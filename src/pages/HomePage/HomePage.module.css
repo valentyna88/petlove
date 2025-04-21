@@ -42,8 +42,7 @@
 @media screen and (min-width: 768px) {
   .titleBox {
     gap: 32px;
-    padding: 123px 32px 44px;
-    padding-block: 123px 44px;
+    padding-block: 178px 44px;
     padding-inline: 32px;
     border-radius: 60px;
   }
@@ -70,7 +69,7 @@
   .titleBox {
     flex-direction: row;
     gap: 73px;
-    padding-block: 112px 32px;
+    padding-block: 178px 32px;
     padding-inline: 64px;
   }
   .title {

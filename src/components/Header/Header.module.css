@@ -1,5 +1,8 @@
 .header {
   width: 100%;
+  /* position: absolute; */
+}
+.homeHeader {
   position: absolute;
 }
 .mobileHeader {
