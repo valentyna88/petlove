@@ -2,18 +2,25 @@ import Nav from '../Nav/Nav';
 import AuthNav from '../AuthNav/AuthNav';
 import sprite from '../../assets/sprite.svg';
 import css from './MobileMenu.module.css';
+import clsx from 'clsx';
 
-const MobileMenu = ({ closeMenu }) => {
+const MobileMenu = ({ closeMenu, isHomePage }) => {
   return (
-    <div className={css.menu}>
+    <div className={clsx(css.menu, { [css.menuHome]: isHomePage })}>
       <div className={css.menuContent}>
-        <button className={css.closeButton} type="button" onClick={closeMenu}>
+        <button
+          className={clsx(css.closeButton, {
+            [css.closeButtonHome]: isHomePage,
+          })}
+          type="button"
+          onClick={closeMenu}
+        >
           <svg className={css.icon}>
             <use href={`${sprite}#icon-cross-small`}></use>
           </svg>
         </button>
-        <Nav closeMenu={closeMenu} />
-        <AuthNav />
+        <Nav closeMenu={closeMenu} isHomePage={isHomePage} />
+        <AuthNav isHomePage={isHomePage} />
       </div>
     </div>
   );
