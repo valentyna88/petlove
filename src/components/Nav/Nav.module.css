@@ -4,7 +4,6 @@
   align-items: center;
   gap: 10px;
 }
-
 .link {
   display: flex;
   align-items: center;
@@ -16,12 +15,14 @@
   font-size: 14px;
   letter-spacing: -0.03em;
   white-space: nowrap;
+  transition: border var(--transition), color var(--transition);
+}
+.blackLink {
+  border: 1px solid var(--color-text-span-light);
+  color: var(--bg-secondary);
 }
 .active {
-  border: 1px solid var(--color-accent);
-  color: var(--color-text-dark);
-  width: 119px;
-  height: 48px;
+  border: 1px solid var(--bg-secondary);
 }
 
 @media screen and (min-width: 768px) {
@@ -40,22 +41,11 @@
     flex-direction: row;
     align-items: center;
   }
-  .link:not(.active) {
-    border: 1px solid var(--color-gray-border);
-  }
-  .link.white {
-    border: 1px solid var(--color-text-span-light);
-    color: var(--bg-secondary);
-    transition: border var(--transition);
-
-    &:hover,
-    &:focus {
-      border: 1px solid var(--bg-secondary);
-    }
-  }
   .link {
     font-size: 16px;
     line-height: 1.25;
+    color: var(--color-text-dark);
+    border: 1px solid var(--color-gray-border);
     transition: border var(--transition);
 
     &:hover,
@@ -63,15 +53,17 @@
       border: 1px solid var(--color-accent);
     }
   }
-  .active {
-    border: 1px solid var(--bg-secondary);
-    color: var(--color-text-dark);
-    padding: 15px 40px;
-  }
-  .white {
+  .link.whiteLink {
+    border: 1px solid var(--color-text-span-light);
     color: var(--bg-secondary);
+
+    &:hover,
+    &:focus {
+      border: 1px solid var(--bg-secondary);
+    }
   }
-  .black {
-    color: var(--color-text-dark);
+  .active {
+    border: 1px solid var(--color-accent);
+    padding: 15px 40px;
   }
 }

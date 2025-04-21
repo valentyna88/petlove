@@ -6,7 +6,7 @@ const Nav = ({ closeMenu, isHomePage }) => {
   const buildLinkClass = ({ isActive }) => {
     return clsx(
       css.link,
-      isHomePage ? css.white : css.black,
+      isHomePage ? css.whiteLink : css.blackLink,
       isActive && css.active
     );
   };
