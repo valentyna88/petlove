@@ -1,0 +1,56 @@
+.pagination {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin-top: 44px;
+  margin-bottom: 80px;
+}
+.paginationList {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-btn-gray-bg);
+  background-color: transparent;
+  color: var(--color-text-dark);
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.active {
+  background-color: var(--color-accent);
+  color: var(--bg-secondary);
+  border: none;
+}
+.iconDouble {
+  margin-left: -4px;
+}
+.icon,
+.iconDouble {
+  width: 10px;
+  height: 12px;
+  fill: var(--color-gray-light);
+}
+.ellipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  line-height: 1.25;
+  color: var(--color-text-dark);
+  border-radius: 50%;
+  border: 1px solid var(--color-btn-gray-bg);
+}
