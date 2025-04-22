@@ -1,5 +1,9 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectCurrentPage,
+  selectTotalPages,
+} from '../../redux/news/selectors';
 import { fetchNews } from '../../redux/news/operations';
 import Container from '../../components/Container/Container';
 import SearchField from '../../components/SearchField/SearchField';
@@ -10,9 +14,17 @@ import css from './NewsPage.module.css';
 
 const NewsPage = () => {
   const dispatch = useDispatch();
+
+  const currentPage = useSelector(selectCurrentPage);
+  const totalPages = useSelector(selectTotalPages);
+
   useEffect(() => {
-    dispatch(fetchNews(), [dispatch]);
-  });
+    dispatch(fetchNews({ page: 1, limit: 6 }));
+  }, [dispatch]);
+
+  const handlePageChange = page => {
+    dispatch(fetchNews({ page, limit: 6 }));
+  };
 
   return (
     <Container>
@@ -21,7 +33,11 @@ const NewsPage = () => {
         <SearchField />
       </div>
       <NewsList />
-      <Pagination />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </Container>
   );
 };
