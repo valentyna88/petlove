@@ -1,0 +1,73 @@
+.link {
+  display: block;
+  width: 80px;
+  height: 80px;
+}
+.link img {
+  width: 100%;
+}
+.friendInfo {
+  width: 190px;
+}
+.workingHours {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 32px;
+  padding: 8px;
+  border-radius: 30px;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  background-color: var(--bg-accent-yellow);
+  color: var(--color-accent);
+}
+.title {
+  margin-bottom: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.04em;
+  color: var(--color-text-dark);
+}
+.friendText {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var(--color-gray-light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.friendLink {
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+}
+
+@media screen and (min-width: 768px) {
+  .link {
+    width: 90px;
+    height: 90px;
+  }
+  .friendInfo {
+    width: 196px;
+  }
+  .workingHours {
+    width: 102px;
+    height: 34px;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+  }
+  .title {
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.04em;
+  }
+}
