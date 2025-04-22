@@ -13,6 +13,9 @@ const handleRejected = (state, action) => {
 
 const initialState = {
   news: [],
+  currentPage: 1,
+  totalPages: 0,
+  limit: 6,
   isLoading: false,
   error: null,
 };
@@ -27,6 +30,8 @@ const newsSlice = createSlice({
       .addCase(fetchNews.fulfilled, (state, action) => {
         state.isLoading = false;
         state.news = action.payload.results;
+        state.currentPage = action.payload.page;
+        state.totalPages = action.payload.totalPages;
       })
       .addCase(fetchNews.rejected, handleRejected);
   },
