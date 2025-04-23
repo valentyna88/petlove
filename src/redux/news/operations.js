@@ -5,10 +5,16 @@ axios.defaults.baseURL = 'https://petlove.b.goit.study/api';
 
 export const fetchNews = createAsyncThunk(
   'news/fetchAll',
-  async ({ page = 1, limit = 6 }, thunkAPI) => {
+  async ({ page = 1, limit = 6, searchQuery }, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/news?page=${page}&limit=${limit}`);
-      return data;
+      const params = new URLSearchParams({
+        page,
+        limit,
+        ...(searchQuery ? { keyword: searchQuery } : {}),
+      });
+
+      const response = await axios.get(`/news?${params.toString()}`);
+      return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

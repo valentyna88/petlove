@@ -16,6 +16,7 @@ const initialState = {
   currentPage: 1,
   totalPages: 0,
   limit: 6,
+  searchQuery: '',
   isLoading: false,
   error: null,
 };
@@ -23,7 +24,11 @@ const initialState = {
 const newsSlice = createSlice({
   name: 'news',
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchQuery(state, action) {
+      state.searchQuery = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchNews.pending, handlePending)
@@ -37,4 +42,5 @@ const newsSlice = createSlice({
   },
 });
 
+export const { setSearchQuery } = newsSlice.actions;
 export default newsSlice.reducer;
