@@ -42,6 +42,10 @@
   width: 10px;
   height: 12px;
   fill: var(--color-gray-light);
+  transition: var(--transition);
+}
+.iconActive {
+  fill: var(--color-text-dark);
 }
 .ellipsis {
   display: flex;

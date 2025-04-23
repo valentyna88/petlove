@@ -12,6 +12,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const visiblePageCount = isTabletOrLarger ? 3 : 2;
   const pages = getPaginationPages(currentPage, totalPages, visiblePageCount);
 
+  const isFirstPage = currentPage === 1;
+  const isLastPage = currentPage === totalPages;
+
   return (
     <div className={css.pagination}>
       <ul className={css.paginationList}>
@@ -21,12 +24,20 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             className={css.button}
             aria-label="First page"
             onClick={() => onPageChange(1)}
-            disabled={currentPage === 1}
+            disabled={isFirstPage}
           >
-            <svg className={css.icon}>
+            <svg
+              className={clsx(css.iconDouble, {
+                [css.iconActive]: !isFirstPage,
+              })}
+            >
               <use href={`${sprite}#icon-left-arrow`} />
             </svg>
-            <svg className={css.iconDouble}>
+            <svg
+              className={clsx(css.iconDouble, {
+                [css.iconActive]: !isFirstPage,
+              })}
+            >
               <use href={`${sprite}#icon-left-arrow`} />
             </svg>
           </button>
@@ -38,9 +49,13 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             className={css.button}
             aria-label="Previous page"
             onClick={() => onPageChange(currentPage - 1)}
-            disabled={currentPage === 1}
+            disabled={isFirstPage}
           >
-            <svg className={css.icon}>
+            <svg
+              className={clsx(css.icon, {
+                [css.iconActive]: !isFirstPage,
+              })}
+            >
               <use href={`${sprite}#icon-left-arrow`} />
             </svg>
           </button>
@@ -69,9 +84,13 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             className={css.button}
             aria-label="Next page"
             onClick={() => onPageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
+            disabled={isLastPage}
           >
-            <svg className={css.icon}>
+            <svg
+              className={clsx(css.icon, {
+                [css.iconActive]: !isLastPage,
+              })}
+            >
               <use href={`${sprite}#icon-right-arrow`} />
             </svg>
           </button>
@@ -83,12 +102,20 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             className={css.button}
             aria-label="Last page"
             onClick={() => onPageChange(totalPages)}
-            disabled={currentPage === totalPages}
+            disabled={isLastPage}
           >
-            <svg className={css.icon}>
+            <svg
+              className={clsx(css.icon, {
+                [css.iconActive]: !isLastPage,
+              })}
+            >
               <use href={`${sprite}#icon-right-arrow`} />
             </svg>
-            <svg className={css.iconDouble}>
+            <svg
+              className={clsx(css.iconDouble, {
+                [css.iconActive]: !isLastPage,
+              })}
+            >
               <use href={`${sprite}#icon-right-arrow`} />
             </svg>
           </button>

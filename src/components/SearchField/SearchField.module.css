@@ -12,6 +12,7 @@
   line-height: 1.25;
   letter-spacing: -0.03em;
   color: var(--color-text-dark);
+  transition: border var(--transition);
 
   &:hover,
   &:focus {
