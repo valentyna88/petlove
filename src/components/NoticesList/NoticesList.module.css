@@ -1,14 +1,17 @@
 .noticesList {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 20px;
   margin-bottom: 44px;
 }
 .noticesItem {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  justify-content: space-between;
   width: 100%;
+  border-radius: 16px;
+  background-color: var(--bg-secondary);
 }
 .noResults {
   text-align: center;

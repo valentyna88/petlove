@@ -56,9 +56,9 @@ ol {
   padding: 0;
   list-style-type: none;
 }
-p:last-child {
+/* p:last-child {
   margin-bottom: 0;
-}
+} */
 img {
   display: block;
   max-width: 100%;
