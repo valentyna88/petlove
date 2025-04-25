@@ -168,7 +168,7 @@ const RegistrationForm = () => {
               )}
 
               <button
-                className={css.passwordBtnEye}
+                className={css.eyeIcon}
                 type="button"
                 onClick={togglePasswordVisibility}
               >
@@ -217,7 +217,7 @@ const RegistrationForm = () => {
               )}
 
               <button
-                className={css.passwordBtnEye}
+                className={css.eyeIcon}
                 type="button"
                 onClick={toggleConfirmPasswordVisibility}
               >
@@ -234,14 +234,14 @@ const RegistrationForm = () => {
             </label>
           </div>
 
-          <button className={css.registerBtn} type="submit">
+          <button className={css.button} type="submit">
             Registration
           </button>
         </form>
 
-        <p className={css.registrationLink}>
+        <p className={css.linkText}>
           Already have an account?&nbsp;
-          <Link className={css.registrationLinkLogin} to="/login">
+          <Link className={css.link} to="/login">
             Login
           </Link>
         </p>
