@@ -41,10 +41,14 @@ const RegistrationForm = () => {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors, touchedFields },
   } = useForm({
     resolver: yupResolver(registerSchema),
+    mode: 'onBlur',
   });
+
+  const watchFields = watch(); // Следит за вводом данных
 
   const onSubmit = async data => {
     const { name, email, password } = data;
@@ -73,12 +77,13 @@ const RegistrationForm = () => {
               <input
                 type="text"
                 placeholder="Name"
-                className={`
-            ${css.input} ${
+                className={`${css.input} ${
                   errors.name
                     ? css.inputError
-                    : touchedFields.name
+                    : touchedFields.name && !errors.name
                     ? css.inputSuccess
+                    : watchFields.name
+                    ? css.inputActive
                     : ''
                 }`}
                 {...register('name')}
@@ -106,12 +111,13 @@ const RegistrationForm = () => {
               <input
                 type="email"
                 placeholder="Email"
-                className={`
-            ${css.input} ${
+                className={`${css.input} ${
                   errors.email
                     ? css.inputError
-                    : touchedFields.email
+                    : touchedFields.email && !errors.email
                     ? css.inputSuccess
+                    : watchFields.email
+                    ? css.inputActive
                     : ''
                 }`}
                 {...register('email')}
@@ -139,12 +145,13 @@ const RegistrationForm = () => {
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
-                className={`
-            ${css.input} ${
+                className={`${css.input} ${
                   errors.password
                     ? css.inputError
-                    : touchedFields.password
+                    : touchedFields.password && !errors.password
                     ? css.inputSuccess
+                    : watchFields.password
+                    ? css.inputActive
                     : ''
                 }`}
                 {...register('password')}
@@ -188,12 +195,13 @@ const RegistrationForm = () => {
               <input
                 type={showConfirmPassword ? 'text' : 'password'}
                 placeholder="Confirm password"
-                className={`
-            ${css.input} ${
+                className={`${css.input} ${
                   errors.confirmPassword
                     ? css.inputError
-                    : touchedFields.confirmPassword
+                    : touchedFields.confirmPassword && !errors.confirmPassword
                     ? css.inputSuccess
+                    : watchFields.confirmPassword
+                    ? css.inputActive
                     : ''
                 }`}
                 {...register('confirmPassword')}

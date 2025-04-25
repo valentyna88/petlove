@@ -36,6 +36,9 @@
   letter-spacing: -0.03em;
   color: var(--color-gray-light);
 }
+.inputActive {
+  border-color: var(--color-accent);
+}
 .inputError {
   border-color: var(--color-error);
 }
