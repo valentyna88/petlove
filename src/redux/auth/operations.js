@@ -30,3 +30,17 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
+
+export const loginUser = createAsyncThunk(
+  'auth/login',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await authInstance.post('/users/signin', credentials);
+      setToken(data.token);
+      return data;
+    } catch (e) {
+      toast.error(e.response?.data?.message || 'Error, Invalid data');
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
