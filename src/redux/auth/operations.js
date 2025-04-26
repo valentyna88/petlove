@@ -36,10 +36,30 @@ export const loginUser = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await authInstance.post('/users/signin', credentials);
+      console.log('LOGIN DATA:', data);
       setToken(data.token);
       return data;
     } catch (e) {
       toast.error(e.response?.data?.message || 'Error, Invalid data');
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+
+    if (!token) {
+      return thunkAPI.rejectWithValue('No valid token to refresh user data');
+    }
+    try {
+      setToken(token);
+      const { data } = await authInstance.get('/users/current');
+      return data;
+    } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
   }
