@@ -1,0 +1,64 @@
+.imageContainer {
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .messageWrapper {
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    width: 294px;
+    height: 121px;
+    padding: 18px 16px 19px;
+    border-radius: 20px;
+    background-color: var(--bg-secondary);
+  }
+  .avatarWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    min-width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+  .nameWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .name {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+    color: var(--color-accent);
+  }
+  .birthday {
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: -0.02em;
+    color: var(--color-gray-light);
+  }
+  .birthday span {
+    color: var(--color-text-dark);
+  }
+  .description {
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: -0.02em;
+    color: var(--color-text-input);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .messageWrapper {
+    left: 61px;
+    bottom: 97px;
+  }
+}
