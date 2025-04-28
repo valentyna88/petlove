@@ -1,6 +1,12 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from '../../redux/auth/operations';
+import { lazy, useEffect } from 'react';
 import Layout from '../../components/Layout';
+import Loader from '../Loader/Loader';
+import RestrictedRoute from '../RestrictedRoute';
+import PrivateRoute from '../PrivateRoute';
+import { useAuth } from '../../hooks/useAuth';
 // import './App.module.css';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
@@ -20,7 +26,16 @@ const NotFoundPage = lazy(() =>
 );
 
 const App = () => {
-  return (
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Navigate to="/home" />} />
@@ -28,11 +43,35 @@ const App = () => {
         <Route path="news" element={<NewsPage />} />
         <Route path="notices" element={<NoticesPage />} />
         <Route path="friends" element={<OurFriendsPage />} />
-        <Route path="register" element={<RegistrationPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="profile" element={<ProfilePage />} />
-        <Route path="add-pet" element={<AddPetPage />} />
+        <Route
+          path="profile"
+          element={
+            <PrivateRoute redirectTo="/home" component={<ProfilePage />} />
+          }
+        ></Route>
+        <Route
+          path="add-pet"
+          element={
+            <PrivateRoute redirectTo="/home" component={<AddPetPage />} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/profile" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute
+              redirectTo="/profile"
+              component={<RegistrationPage />}
+            />
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
+        <Route />
       </Route>
     </Routes>
   );
