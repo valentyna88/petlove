@@ -1,33 +1,20 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { registerSchema } from '../../utils/validationSchemas';
 import { registerUser } from '../../redux/auth/operations';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Title from '../Title/Title';
 import sprite from '../../assets/sprite.svg';
 import css from './RegistrationForm.module.css';
-import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import toast from 'react-hot-toast';
 
 const RegistrationForm = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-
-  // useEffect(() => {
-  //   console.log('Auth status changed:', isLoggedIn);
-  // }, [isLoggedIn]);
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/profile');
-    }
-  }, [isLoggedIn, navigate]);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -46,9 +33,15 @@ const RegistrationForm = () => {
   } = useForm({
     resolver: yupResolver(registerSchema),
     mode: 'onBlur',
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    },
   });
 
-  const watchFields = watch(); // Следит за вводом данных
+  const watchFields = watch();
 
   const onSubmit = async data => {
     const { name, email, password } = data;
