@@ -1,0 +1,180 @@
+.formContainer {
+  margin-top: 10px;
+  padding: 60px 20px;
+  border-radius: 30px;
+  background-color: var(--bg-secondary);
+}
+.text {
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  margin: 12px 0 24px;
+}
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+.inputLabel {
+  position: relative;
+  width: 100%;
+}
+.input {
+  width: 100%;
+  border: 1px solid var(--color-gray-border);
+  border-radius: 30px;
+  padding: 12px;
+  font-size: 14px;
+  letter-spacing: -0.03em;
+  color: var(--color-text-dark);
+}
+.input::placeholder {
+  font-size: 14px;
+  letter-spacing: -0.03em;
+  color: var(--color-gray-light);
+}
+.inputActive {
+  border-color: var(--color-accent);
+}
+.inputError {
+  border-color: var(--color-error);
+}
+.inputSuccess {
+  border-color: var(--color-success);
+}
+.iconCross {
+  position: absolute;
+  top: 15px;
+  right: 50px;
+  fill: transparent;
+  stroke: var(--color-error);
+}
+.iconCheck {
+  position: absolute;
+  top: 15px;
+  right: 50px;
+  fill: transparent;
+  stroke: #08aa83;
+}
+.error {
+  margin-top: 2px;
+  margin-left: 12px;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: var(--color-error);
+}
+.eyeIcon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: transparent;
+}
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  padding: 12px 99px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  background-color: var(--color-accent);
+  color: var(--bg-secondary);
+  margin-bottom: 12px;
+  transition: background-color var(--transition), color var(--transition);
+
+  &:hover {
+    background-color: var(--btn-hover-bg);
+    color: var(--color-accent);
+  }
+}
+.linkText {
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: -0.03em;
+  color: var(--color-gray-light);
+}
+.link {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--color-accent);
+}
+
+@media screen and (min-width: 768px) {
+  .formContainer {
+    margin-top: 16px;
+    padding: 71px 140px;
+    border-radius: 60px;
+  }
+  .title {
+    font-size: 54px;
+    margin-bottom: 16px;
+  }
+  .text {
+    font-size: 18px;
+    line-height: 1.22;
+    margin-bottom: 32px;
+  }
+  .inputWrapper {
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+  .input {
+    padding: 16px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  .input::placeholder {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  .iconCheck {
+    width: 22px;
+    height: 22px;
+    top: 15px;
+    right: 50px;
+  }
+  .error {
+    font-size: 12px;
+    line-height: 1.17;
+    margin-top: 4px;
+  }
+  .eyeIcon {
+    width: 22px;
+    height: 22px;
+    top: 15px;
+    right: 16px;
+  }
+  .button {
+    padding: 16px 157px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  .linkText,
+  .link {
+    font-size: 14px;
+    line-height: 1.43;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .formContainer {
+    width: 592px;
+    height: 654px;
+    margin-top: 0px;
+    padding: 118px 84px;
+  }
+  .text {
+    margin-top: 16px;
+  }
+}
