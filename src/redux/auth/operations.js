@@ -64,3 +64,17 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const logoutUser = createAsyncThunk(
+  'auth/logout',
+  async (_, thunkAPI) => {
+    try {
+      await authInstance.post('/users/signout');
+      clearToken();
+      return {};
+    } catch (e) {
+      toast.error('Error, server not answer');
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
