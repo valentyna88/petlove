@@ -2,12 +2,11 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from '../../redux/auth/operations';
 import { lazy, useEffect } from 'react';
+import { useAuth } from '../../hooks/useAuth';
 import Layout from '../../components/Layout';
 import Loader from '../Loader/Loader';
 import RestrictedRoute from '../RestrictedRoute';
 import PrivateRoute from '../PrivateRoute';
-import { useAuth } from '../../hooks/useAuth';
-// import './App.module.css';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
 const NewsPage = lazy(() => import('../../pages/NewsPage/NewsPage'));

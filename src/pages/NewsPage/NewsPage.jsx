@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCurrentPage,
+  selectIsLoading,
+  selectNews,
   selectSearchQuery,
   selectTotalPages,
 } from '../../redux/news/selectors';
@@ -12,10 +14,13 @@ import SearchField from '../../components/SearchField/SearchField';
 import NewsList from '../../components/NewsList/NewsList';
 import Pagination from '../../components/Pagination/Pagination';
 import Title from '../../components/Title/Title';
+import Loader from '../../components/Loader/Loader';
 import css from './NewsPage.module.css';
 
 const NewsPage = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const news = useSelector(selectNews);
   const searchQuery = useSelector(selectSearchQuery);
   const currentPage = useSelector(selectCurrentPage);
   const totalPages = useSelector(selectTotalPages);
@@ -40,12 +45,19 @@ const NewsPage = () => {
         <Title>News</Title>
         <SearchField onSearch={handleSearch} />
       </div>
-      <NewsList />
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <NewsList news={news} />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </Container>
   );
 };
