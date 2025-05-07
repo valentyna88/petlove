@@ -1,0 +1,18 @@
+.userLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--bg-accent-yellow);
+}
+.userName {
+  display: block !important;
+  color: var(--color-text-dark);
+  font-size: 16px;
+}
+.userNameHome {
+  color: var(--bg-secondary);
+}
