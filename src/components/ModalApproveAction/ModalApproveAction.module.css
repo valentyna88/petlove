@@ -1,0 +1,59 @@
+.iconWrapper {
+  width: 80px;
+  margin: 0 auto 20px;
+}
+.text {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
+}
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.confirmButton,
+.cancelButton {
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  transition: background-color var(--transition), color var(--transition);
+}
+.confirmButton {
+  padding: 12px 57px;
+  background-color: var(--color-accent);
+  color: var(--bg-secondary);
+
+  &:hover {
+    background-color: var(--btn-hover-bg);
+  }
+}
+.cancelButton {
+  padding: 12px 44px;
+  background-color: var(--color-btn-gray-bg);
+  color: var(--color-text-dark);
+}
+.cancelButton:hover {
+  background-color: var(--color-gray-medium);
+}
+
+@media screen and (min-width: 768px) {
+  .text {
+    font-size: 24px;
+    line-height: 1.17;
+  }
+  .confirmButton,
+  .cancelButton {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  .confirmButton {
+    padding: 14px 57px;
+  }
+  .cancelButton {
+    padding: 14px 44px;
+  }
+}
