@@ -1,24 +1,21 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from '../../redux/auth/selectors';
-import { logoutUser } from '../../redux/auth/operations';
+import { useState } from 'react';
+import ModalApproveAction from '../ModalApproveAction/ModalApproveAction';
 import css from './LogOutBtn.module.css';
 
 const LogOutBtn = () => {
-  const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  if (!user) {
-    return null;
-  }
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
-    <button
-      type="button"
-      className={css.button}
-      onClick={() => dispatch(logoutUser())}
-    >
-      Log out
-    </button>
+    <>
+      <button type="button" className={css.button} onClick={openModal}>
+        Log out
+      </button>
+
+      <ModalApproveAction isOpen={isModalOpen} onClose={closeModal} />
+    </>
   );
 };
 
