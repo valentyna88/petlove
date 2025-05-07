@@ -1,9 +1,15 @@
+.mobileNav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
 .authTablet {
   display: none;
 }
 .header {
   width: 100%;
-  /* position: absolute; */
 }
 .homeHeader {
   position: absolute;
@@ -30,7 +36,6 @@
 .whiteIcon {
   --color-icon: var(--bg-secondary);
 }
-
 .blackIcon {
   --color-icon: var(--color-text-dark);
 }
@@ -39,6 +44,9 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
+  .mobileNav {
+    gap: 16px;
+  }
   .authTablet {
     display: flex;
   }
