@@ -1,0 +1,44 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  background-color: var(--color-overlay);
+}
+.modal {
+  position: relative;
+  border-radius: 30px;
+  background-color: var(--bg-secondary);
+  width: 335px;
+  overflow-y: auto;
+  padding: 40px 28px;
+}
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  color: var(--color-text-dark);
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  stroke: var(--color-text-dark);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 448px;
+    padding: 80px;
+  }
+}
