@@ -1,0 +1,101 @@
+.filtersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+  border-radius: 30px;
+  margin: 40px 0;
+  background-color: var(--bg-accent-yellow);
+}
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.selectsWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  border-radius: 30px;
+}
+.sortButtons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.sortButton {
+  background-color: var(--bg-secondary);
+  color: var(--color-text-dark);
+  padding: 12px;
+  border: 1px solid var(--color-gray-border);
+  border-radius: 30px;
+  transition: background-color var(--transition), color var(--transition);
+}
+.sortButton.active {
+  background-color: var(--color-accent);
+  color: var(--bg-secondary);
+}
+.resetButton {
+  background-color: var(--color-gray-light);
+  color: var(--color-text-dark);
+  padding: 8px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.locationSelect {
+  position: relative;
+  width: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--color-gray-border);
+  border-radius: 30px;
+  padding: 8px 12px;
+  gap: 8px;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  padding-right: 24px;
+  color: var(--color-text-dark);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  fill: transparent;
+  stroke: var(--color-text-dark);
+}
+
+.optionsList {
+  position: absolute;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--color-gray-border);
+  border-radius: 10px;
+  margin-top: 4px;
+  padding: 8px 0;
+  z-index: 10;
+}
+
+.optionItem {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.optionItem:hover {
+  color: var(--color-accent);
+}
