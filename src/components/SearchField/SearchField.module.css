@@ -6,10 +6,11 @@
   position: relative;
   border: 1px solid var(--color-gray-border);
   border-radius: 30px;
-  padding: 14px;
+  padding: 12px;
   width: 100%;
-  font-size: 16px;
-  line-height: 1.25;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.29;
   letter-spacing: -0.03em;
   color: var(--color-text-dark);
   transition: border var(--transition);
@@ -20,6 +21,7 @@
   }
 }
 .input::placeholder {
+  font-weight: 500;
   color: var(--color-gray-light);
 }
 .button,
