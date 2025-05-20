@@ -26,8 +26,9 @@ const initialState = {
   currentPage: 1,
   totalPages: 0,
   limit: 6,
+  searchQuery: '',
   filters: {
-    search: '',
+    // search: '',
     category: '',
     gender: '',
     petType: '',
@@ -42,10 +43,9 @@ const noticesSlice = createSlice({
   name: 'notices',
   initialState,
   reducers: {
-    // setFilters: (state, action) => {
-    //   state.filters = { ...state.filters, ...action.payload };
-    // },
-
+    setSearchQuery(state, action) {
+      state.searchQuery = action.payload;
+    },
     setFilters: (state, action) => {
       state.filters = { ...state.filters, ...action.payload };
       if (action.payload.locationId === '') {
@@ -90,6 +90,6 @@ const noticesSlice = createSlice({
       .addCase(fetchLocations.rejected, handleRejected);
   },
 });
-export const { setFilters } = noticesSlice.actions;
+export const { setFilters, setSearchQuery } = noticesSlice.actions;
 
 export default noticesSlice.reducer;

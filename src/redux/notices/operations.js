@@ -3,27 +3,15 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://petlove.b.goit.study/api';
 
-// export const fetchNotices = createAsyncThunk(
-//   'notices/fetchAll',
-//   async ({ page = 1, limit = 6, filters = {} }, thunkAPI) => {
-//     try {
-//       const { data } = await axios.get(`/notices?page=${page}&limit=${limit}`);
-//       return data;
-//     } catch (e) {
-//       return thunkAPI.rejectWithValue(e.message);
-//     }
-//   }
-// );
-
 export const fetchNotices = createAsyncThunk(
   'notices/fetchAll',
-  async ({ page = 1, limit = 6, filters = {} }, thunkAPI) => {
+  async ({ page = 1, limit = 6, searchQuery, filters = {} }, thunkAPI) => {
     try {
       const params = new URLSearchParams();
       params.append('page', page);
       params.append('limit', limit);
 
-      if (filters.keyword) params.append('keyword', filters.keyword);
+      if (searchQuery) params.append('keyword', searchQuery);
       if (filters.category) params.append('category', filters.category);
       if (filters.petType) params.append('species', filters.petType);
       if (filters.locationId) params.append('locationId', filters.locationId);

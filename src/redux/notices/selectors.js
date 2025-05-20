@@ -8,3 +8,4 @@ export const selectTotalPages = state => state.notices.totalPages;
 export const selectIsLoading = state => state.notices.isLoading;
 export const selectError = state => state.notices.error;
 export const selectFilters = state => state.notices.filters;
+export const selectSearchQuery = state => state.notices.searchQuery;
