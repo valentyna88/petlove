@@ -7,6 +7,7 @@ import Title from '../../components/Title/Title';
 import {
   selectCurrentPage,
   selectFilters,
+  selectSearchQuery,
   selectTotalPages,
 } from '../../redux/notices/selectors';
 import { useEffect } from 'react';
@@ -15,22 +16,22 @@ import { fetchNotices } from '../../redux/notices/operations';
 
 const NoticesPage = () => {
   const dispatch = useDispatch();
+  const searchQuery = useSelector(selectSearchQuery);
   const currentPage = useSelector(selectCurrentPage);
   const totalPages = useSelector(selectTotalPages);
   const filters = useSelector(selectFilters);
 
-  // useEffect(() => {
-  //   dispatch(fetchNotices({ page: 1, limit: 6 }));
-  // }, [dispatch]);
-
   useEffect(() => {
     console.log('Current Filters:', filters);
-    dispatch(fetchNotices({ page: currentPage, limit: 6, filters }));
-  }, [dispatch, currentPage, filters]);
+    console.log('Search:', searchQuery);
+    dispatch(
+      fetchNotices({ page: currentPage, limit: 6, searchQuery, filters })
+    );
+  }, [dispatch, currentPage, filters, searchQuery]);
 
   const handlePageChange = page => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    dispatch(fetchNotices({ page, limit: 6, filters }));
+    dispatch(fetchNotices({ page, limit: 6, searchQuery, filters }));
   };
 
   return (
