@@ -1,19 +1,18 @@
+import { components as ReactSelectComponents } from 'react-select';
 import sprite from '../../assets/sprite.svg';
 
 const DropdownIndicator = props => {
   const { filterKey } = props.selectProps;
 
-  if (filterKey === 'locationId') {
-    return (
-      <components.DropdownIndicator {...props}>
-        <svg width="18" height="18" fill="var(--color-gray-light)">
+  return (
+    <ReactSelectComponents.DropdownIndicator {...props}>
+      {filterKey === 'locationId' ? (
+        <svg width="18" height="18" fill="transparent" stroke="currentColor">
           <use href={`${sprite}#icon-search`} />
         </svg>
-      </components.DropdownIndicator>
-    );
-  }
-
-  return <components.DropdownIndicator {...props} />;
+      ) : null}
+    </ReactSelectComponents.DropdownIndicator>
+  );
 };
 
 export default DropdownIndicator;
