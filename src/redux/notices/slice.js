@@ -28,7 +28,6 @@ const initialState = {
   limit: 6,
   searchQuery: '',
   filters: {
-    // search: '',
     category: '',
     gender: '',
     petType: '',
