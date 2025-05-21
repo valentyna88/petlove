@@ -1,76 +1,68 @@
-import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLocations } from '../../redux/notices/operations';
-import { selectLocations } from '../../redux/notices/selectors';
+import { selectLocations, selectFilters } from '../../redux/notices/selectors';
 import { setFilters } from '../../redux/notices/slice';
-import sprite from '../../assets/sprite.svg';
+import { selectStyles } from './selectStyles';
+import AsyncSelect from 'react-select/async';
+import DropdownIndicator from './DropdownIndicator';
 import css from '../NoticesFilters/NoticesFilters.module.css';
 
 const LocationSelect = () => {
   const dispatch = useDispatch();
   const locations = useSelector(selectLocations);
-  const [inputValue, setInputValue] = useState('');
-  const [filteredLocations, setFilteredLocations] = useState([]);
+  const filters = useSelector(selectFilters);
+  const selectedId = filters.locationId || '';
 
-  const handleInputChange = e => {
-    const value = e.target.value;
-    setInputValue(value);
-
-    if (value.trim().length >= 3) {
-      dispatch(fetchLocations(value));
-    } else {
-      setFilteredLocations([]);
+  const loadOptions = (inputValue, callback) => {
+    if (inputValue.trim().length < 3) {
+      callback([]);
+      return;
     }
+
+    dispatch(fetchLocations(inputValue)).then(res => {
+      const data = res?.payload || locations;
+      const options = (data || []).map(loc => ({
+        value: loc._id,
+        label: `${loc.cityEn}, ${loc.countyEn}`,
+      }));
+      callback(options);
+    });
   };
 
-  useEffect(() => {
-    if (inputValue.trim().length >= 3) {
-      const formattedInput = inputValue.trim().toLowerCase();
-      setFilteredLocations(
-        locations
-          .filter(loc => loc.cityEn.toLowerCase().startsWith(formattedInput))
+  const selectedOption =
+    selectedId && locations.length
+      ? locations
           .map(loc => ({
-            _id: loc._id,
+            value: loc._id,
             label: `${loc.cityEn}, ${loc.countyEn}`,
           }))
-      );
-    }
-  }, [locations, inputValue]);
+          .find(opt => opt.value === selectedId)
+      : null;
 
-  const handleSelect = location => {
-    dispatch(setFilters({ locationId: location._id }));
-    setInputValue(location.label);
-    setFilteredLocations([]);
+  const handleChange = option => {
+    if (!option) {
+      dispatch(setFilters({ ...filters, locationId: '' }));
+    } else {
+      dispatch(setFilters({ ...filters, locationId: option.value }));
+    }
   };
 
   return (
-    <div className={css.locationSelect}>
-      <div className={css.inputWrapper}>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          placeholder="Location"
-          className={css.input}
-        />
-        <svg className={css.icon}>
-          <use href={`${sprite}#icon-search`} />
-        </svg>
-      </div>
-
-      {filteredLocations.length > 0 && (
-        <ul className={css.optionsList}>
-          {filteredLocations.map(loc => (
-            <li
-              key={loc._id}
-              className={css.optionItem}
-              onClick={() => handleSelect(loc)}
-            >
-              {loc.label}
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className={css.locationWrapper}>
+      <AsyncSelect
+        cacheOptions
+        loadOptions={loadOptions}
+        onChange={handleChange}
+        value={selectedOption}
+        placeholder="Location"
+        styles={selectStyles}
+        className={css.select}
+        isClearable
+        defaultOptions={false}
+        noOptionsMessage={() => 'Type at least 3 letters'}
+        components={{ DropdownIndicator }}
+        filterKey="locationId"
+      />
     </div>
   );
 };
