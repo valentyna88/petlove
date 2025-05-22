@@ -5,7 +5,6 @@ import { setFilters } from '../../redux/notices/slice';
 import { selectStyles } from './selectStyles';
 import AsyncSelect from 'react-select/async';
 import DropdownIndicator from './DropdownIndicator';
-import css from '../NoticesFilters/NoticesFilters.module.css';
 
 const LocationSelect = () => {
   const dispatch = useDispatch();
@@ -48,22 +47,19 @@ const LocationSelect = () => {
   };
 
   return (
-    <div className={css.locationWrapper}>
-      <AsyncSelect
-        cacheOptions
-        loadOptions={loadOptions}
-        onChange={handleChange}
-        value={selectedOption}
-        placeholder="Location"
-        styles={selectStyles}
-        className={css.select}
-        isClearable
-        defaultOptions={false}
-        noOptionsMessage={() => 'Type at least 3 letters'}
-        components={{ DropdownIndicator }}
-        filterKey="locationId"
-      />
-    </div>
+    <AsyncSelect
+      cacheOptions
+      loadOptions={loadOptions}
+      onChange={handleChange}
+      value={selectedOption}
+      placeholder="Location"
+      styles={selectStyles}
+      isClearable
+      defaultOptions={false}
+      noOptionsMessage={() => 'Type at least 3 letters'}
+      components={{ DropdownIndicator }}
+      filterKey="locationId"
+    />
   );
 };
 

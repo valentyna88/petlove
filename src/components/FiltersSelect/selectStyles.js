@@ -1,7 +1,7 @@
 export const selectStyles = {
   control: (provided, state) => ({
     ...provided,
-    padding: '12px',
+    padding: '0 12px',
     borderRadius: '30px',
     border:
       state.isFocused || state.menuIsOpen
@@ -9,14 +9,19 @@ export const selectStyles = {
         : '1px solid transparent',
     backgroundColor: 'var(--bg-secondary)',
     boxShadow: 'none',
-    minHeight: 'unset',
-    height: 'auto',
+    minWidth: '143px',
+    height: '42px',
     cursor: 'pointer',
     fontSize: '14px',
     transition: 'border-color var(--transition)',
     '@media screen and (min-width: 768px)': {
-      padding: '14px',
+      padding: '0 14px',
       fontSize: '16px',
+      minWidth: '170px',
+      minHeight: '48px',
+    },
+    '@media screen and (min-width: 1280px)': {
+      minWidth: '190px',
     },
     '&:hover': {
       borderColor: 'var(--color-accent)',

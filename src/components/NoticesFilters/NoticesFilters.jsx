@@ -62,56 +62,40 @@ const NoticesFilters = () => {
 
   return (
     <div className={css.filtersContainer}>
-      <div className={css.filters}>
-        <div className={css.searchWrapper}>
-          <SearchField onSearch={handleSearch} />
-        </div>
+      <SearchField onSearch={handleSearch} />
 
-        <div className={css.selectsWrapper}>
-          <div className={css.categoryWrapper}>
-            <FiltersSelect
-              options={categories}
-              filterKey="category"
-              placeholder="Category"
-              explicitAll={explicitAll}
-              setExplicitAll={setExplicitAll}
-            />
-          </div>
+      <div className={css.selectsWrapper}>
+        <FiltersSelect
+          options={categories}
+          filterKey="category"
+          placeholder="Category"
+          explicitAll={explicitAll}
+          setExplicitAll={setExplicitAll}
+        />
 
-          <div className={css.genderWrapper}>
-            <FiltersSelect
-              options={genders}
-              filterKey="gender"
-              placeholder="By gender"
-              explicitAll={explicitAll}
-              setExplicitAll={setExplicitAll}
-            />
-          </div>
-        </div>
-
-        <div className={css.typeWrapper}>
-          <FiltersSelect
-            options={petTypes}
-            filterKey="petType"
-            placeholder="By type"
-            explicitAll={explicitAll}
-            setExplicitAll={setExplicitAll}
-          />
-        </div>
-
-        <div className={css.locationWrapper}>
-          <LocationSelect />
-        </div>
-        {hasActiveFilters && (
-          <button
-            type="button"
-            onClick={handleReset}
-            className={css.resetButton}
-          >
-            Reset
-          </button>
-        )}
+        <FiltersSelect
+          options={genders}
+          filterKey="gender"
+          placeholder="By gender"
+          explicitAll={explicitAll}
+          setExplicitAll={setExplicitAll}
+        />
       </div>
+
+      <FiltersSelect
+        options={petTypes}
+        filterKey="petType"
+        placeholder="By type"
+        explicitAll={explicitAll}
+        setExplicitAll={setExplicitAll}
+      />
+
+      <LocationSelect />
+      {hasActiveFilters && (
+        <button type="button" onClick={handleReset} className={css.resetButton}>
+          Reset
+        </button>
+      )}
       <SortButtons />
     </div>
   );

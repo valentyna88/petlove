@@ -3,7 +3,6 @@ import { setFilters } from '../../redux/notices/slice';
 import { selectFilters } from '../../redux/notices/selectors';
 import { selectStyles } from './selectStyles';
 import Select from 'react-select';
-import css from '../NoticesFilters/NoticesFilters.module.css';
 
 const FiltersSelect = ({
   options = [],
@@ -55,7 +54,6 @@ const FiltersSelect = ({
       onChange={handleChange}
       placeholder={placeholder}
       styles={selectStyles}
-      className={css.select}
     />
   );
 };
