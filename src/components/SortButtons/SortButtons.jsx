@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilters } from '../../redux/notices/selectors';
 import { setFilters } from '../../redux/notices/slice';
-import css from '../NoticesFilters/NoticesFilters.module.css';
+import css from './SortButtons.module.css';
 
 const sortOptions = ['Popular', 'Unpopular', 'Cheap', 'Expensive'];
 

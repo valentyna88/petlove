@@ -1,0 +1,35 @@
+.sortButtons {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(38, 38, 38, 0.1);
+}
+.sortButton {
+  background-color: var(--bg-secondary);
+  color: inherit;
+  padding: 12px;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  transition: background-color var(--transition), color var(--transition);
+}
+.sortButton.active {
+  background-color: var(--color-accent);
+  color: var(--bg-secondary);
+}
+
+@media screen and (min-width: 768px) {
+  .sortButtons {
+    gap: 8px;
+  }
+  .sortButton {
+    padding: 14px;
+    font-size: 16px;
+    line-height: 125%;
+  }
+}
