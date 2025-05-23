@@ -29,7 +29,7 @@ const MobileMenu = ({ closeMenu, isHomePage }) => {
             <LogOutBtn />
           </div>
         ) : (
-          <AuthNav />
+          <AuthNav closeMenu={closeMenu} />
         )}
       </div>
     </div>
