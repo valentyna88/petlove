@@ -1,18 +1,17 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Container from '../../components/Container/Container';
-import NoticesFilters from '../../components/NoticesFilters/NoticesFilters';
-import NoticesList from '../../components/NoticesList/NoticesList';
-import Pagination from '../../components/Pagination/Pagination';
-import Title from '../../components/Title/Title';
 import {
   selectCurrentPage,
   selectFilters,
   selectSearchQuery,
   selectTotalPages,
 } from '../../redux/notices/selectors';
-import { useEffect } from 'react';
 import { fetchNotices } from '../../redux/notices/operations';
-// import css from './NoticesPage.module.css';
+import Container from '../../components/Container/Container';
+import NoticesFilters from '../../components/NoticesFilters/NoticesFilters';
+import NoticesList from '../../components/NoticesList/NoticesList';
+import Pagination from '../../components/Pagination/Pagination';
+import Title from '../../components/Title/Title';
 
 const NoticesPage = () => {
   const dispatch = useDispatch();
@@ -22,8 +21,6 @@ const NoticesPage = () => {
   const filters = useSelector(selectFilters);
 
   useEffect(() => {
-    console.log('Current Filters:', filters);
-    console.log('Search:', searchQuery);
     dispatch(
       fetchNotices({ page: currentPage, limit: 6, searchQuery, filters })
     );
@@ -35,7 +32,7 @@ const NoticesPage = () => {
   };
 
   return (
-    <Container>
+    <Container padding="64">
       <Title>Find your favorite pet</Title>
       <NoticesFilters />
       <NoticesList />
