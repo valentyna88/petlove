@@ -1,4 +1,5 @@
 import { formatBirthday } from '../../utils/formatBirthday';
+import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 import sprite from '../../assets/sprite.svg';
 import css from './NoticesItem.module.css';
 
@@ -19,9 +20,9 @@ const NoticesItem = ({ notice }) => {
   const infoItems = [
     { label: 'Name', value: name },
     { label: 'Birthday', value: formatBirthday(birthday) },
-    { label: 'Sex', value: sex },
-    { label: 'Species', value: species },
-    { label: 'Category', value: category },
+    { label: 'Sex', value: capitalizeFirstLetter(sex) },
+    { label: 'Species', value: capitalizeFirstLetter(species) },
+    { label: 'Category', value: capitalizeFirstLetter(category) },
   ];
 
   return (
