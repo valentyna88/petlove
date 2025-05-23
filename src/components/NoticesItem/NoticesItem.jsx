@@ -1,3 +1,4 @@
+import { formatBirthday } from '../../utils/formatBirthday';
 import sprite from '../../assets/sprite.svg';
 import css from './NoticesItem.module.css';
 
@@ -17,7 +18,7 @@ const NoticesItem = ({ notice }) => {
 
   const infoItems = [
     { label: 'Name', value: name },
-    { label: 'Birthday', value: birthday },
+    { label: 'Birthday', value: formatBirthday(birthday) },
     { label: 'Sex', value: sex },
     { label: 'Species', value: species },
     { label: 'Category', value: category },
