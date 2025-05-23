@@ -1,9 +1,10 @@
+import { useAuth } from '../../hooks/useAuth';
 import { formatBirthday } from '../../utils/formatBirthday';
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 import sprite from '../../assets/sprite.svg';
 import css from './NoticesItem.module.css';
 
-const NoticesItem = ({ notice }) => {
+const NoticesItem = ({ notice, onOpenAttentionModal }) => {
   const {
     imgURL,
     species,
@@ -24,6 +25,22 @@ const NoticesItem = ({ notice }) => {
     { label: 'Species', value: capitalizeFirstLetter(species) },
     { label: 'Category', value: capitalizeFirstLetter(category) },
   ];
+
+  const { isLoggedIn } = useAuth();
+
+  const handleLearnMore = () => {
+    if (!isLoggedIn) {
+      onOpenAttentionModal();
+      return;
+    }
+  };
+
+  const handleLikeClick = () => {
+    if (!isLoggedIn) {
+      onOpenAttentionModal();
+      return;
+    }
+  };
 
   return (
     <div className={css.card}>
@@ -55,10 +72,14 @@ const NoticesItem = ({ notice }) => {
 
       <p className={css.price}>Price: ${price}</p>
       <div className={css.btnBox}>
-        <button type="button" className={css.learnMoreBtn}>
+        <button
+          type="button"
+          className={css.learnMoreBtn}
+          onClick={handleLearnMore}
+        >
           Learn more
         </button>
-        <button type="button" className={css.likeBtn}>
+        <button type="button" className={css.likeBtn} onClick={handleLikeClick}>
           <svg className={css.icon} width={18} height={18}>
             <use xlinkHref={`${sprite}#icon-heart`} />
           </svg>
