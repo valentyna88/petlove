@@ -13,27 +13,26 @@ const NoticesList = () => {
   const handleCloseAttentionModal = () => setAttentionModalOpen(false);
 
   return (
-    <>
-      {notices.length === 0 && (
+    <ul className={css.noticesList}>
+      {notices.length === 0 ? (
         <p className={css.noResults}>
           Sorry, no notices found for this search parameter
         </p>
-      )}
-      <ul className={css.noticesList}>
-        {notices.map(notice => (
+      ) : (
+        notices.map(notice => (
           <li key={notice._id} className={css.noticesItem}>
             <NoticesItem
               notice={notice}
               onOpenAttentionModal={handleOpenAttentionModal}
             />
           </li>
-        ))}
-        <ModalAttention
-          isOpen={isAttentionModalOpen}
-          onClose={handleCloseAttentionModal}
-        />
-      </ul>
-    </>
+        ))
+      )}
+      <ModalAttention
+        isOpen={isAttentionModalOpen}
+        onClose={handleCloseAttentionModal}
+      />
+    </ul>
   );
 };
 

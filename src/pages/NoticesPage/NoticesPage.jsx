@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCurrentPage,
   selectFilters,
+  selectIsLoading,
   selectSearchQuery,
   selectTotalPages,
 } from '../../redux/notices/selectors';
@@ -12,9 +13,11 @@ import NoticesFilters from '../../components/NoticesFilters/NoticesFilters';
 import NoticesList from '../../components/NoticesList/NoticesList';
 import Pagination from '../../components/Pagination/Pagination';
 import Title from '../../components/Title/Title';
+import Loader from '../../components/Loader/Loader';
 
 const NoticesPage = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
   const searchQuery = useSelector(selectSearchQuery);
   const currentPage = useSelector(selectCurrentPage);
   const totalPages = useSelector(selectTotalPages);
@@ -35,12 +38,19 @@ const NoticesPage = () => {
     <Container padding="64">
       <Title>Find your favorite pet</Title>
       <NoticesFilters />
-      <NoticesList />
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={handlePageChange}
-      />
+
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <NoticesList />
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </Container>
   );
 };
