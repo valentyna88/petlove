@@ -24,21 +24,23 @@ const ModalApproveAction = ({ isOpen, onClose }) => {
 
   return (
     <ModalContainer isOpen={isOpen} onClose={onClose}>
-      <div className={css.iconWrapper}>
-        <img src={catIcon} alt="Cat icon" />
-      </div>
-      <p className={css.text}>Already leaving?</p>
-      <div className={css.actions}>
-        <button
-          type="button"
-          className={css.confirmButton}
-          onClick={handleLogout}
-        >
-          Yes
-        </button>
-        <button type="button" className={css.cancelButton} onClick={onClose}>
-          Cancel
-        </button>
+      <div className={css.modalContent}>
+        <div className={css.iconWrapper}>
+          <img src={catIcon} alt="Cat icon" />
+        </div>
+        <p className={css.text}>Already leaving?</p>
+        <div className={css.actions}>
+          <button
+            type="button"
+            className={css.confirmButton}
+            onClick={handleLogout}
+          >
+            Yes
+          </button>
+          <button type="button" className={css.cancelButton} onClick={onClose}>
+            Cancel
+          </button>
+        </div>
       </div>
     </ModalContainer>
   );
