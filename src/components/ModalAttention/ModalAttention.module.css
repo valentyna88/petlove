@@ -1,0 +1,79 @@
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  width: 80px;
+  margin: 0 auto 20px;
+}
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  color: var(--color-accent);
+}
+.text {
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 24px;
+  color: var(--color-text-primary);
+}
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.login,
+.register {
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  transition: background-color var(--transition), color var(--transition);
+
+  &:hover {
+    background-color: var(--btn-hover-bg);
+  }
+}
+.login {
+  padding: 12px 48px;
+  background-color: var(--color-accent);
+  color: var(--bg-secondary);
+}
+.register {
+  padding: 12px 24px;
+  background-color: var(--bg-accent-yellow);
+  color: var(--color-accent);
+}
+
+@media screen and (min-width: 768px) {
+  .modalContent {
+    padding: 60px;
+  }
+  .title {
+    font-size: 24px;
+    line-height: 1.17;
+  }
+  .text {
+    margin-bottom: 28px;
+  }
+  .login,
+  .register {
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  .login {
+    padding: 14px 48px;
+  }
+  .register {
+    padding: 14px 24px;
+  }
+}

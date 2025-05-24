@@ -16,6 +16,7 @@
   background-color: var(--bg-secondary);
   width: 335px;
   overflow-y: auto;
+  outline: none;
 }
 .closeButton {
   position: absolute;
@@ -38,6 +39,5 @@
 @media screen and (min-width: 768px) {
   .modal {
     width: 448px;
-    padding: 80px;
   }
 }
