@@ -38,9 +38,10 @@
   padding: 12px 44px;
   background-color: var(--color-btn-gray-bg);
   color: var(--color-text-dark);
-}
-.cancelButton:hover {
-  background-color: var(--color-gray-medium);
+
+  &:hover {
+    background-color: var(--color-gray-medium);
+  }
 }
 
 @media screen and (min-width: 768px) {
