@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { authInstance } from '../auth/operations';
 
 axios.defaults.baseURL = 'https://petlove.b.goit.study/api';
 
@@ -91,6 +92,18 @@ export const fetchLocations = createAsyncThunk(
       params.append('keyword', searchTerm.trim());
 
       const { data } = await axios.get(`/cities/?${params.toString()}`);
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
+export const fetchNoticeById = createAsyncThunk(
+  'notices/fetchById',
+  async (noticeId, thunkAPI) => {
+    try {
+      const { data } = await authInstance.get(`/notices/${noticeId}`);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

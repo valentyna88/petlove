@@ -5,6 +5,7 @@ import {
   fetchGenders,
   fetchPetTypes,
   fetchLocations,
+  fetchNoticeById,
 } from './operations';
 
 const handlePending = state => {
@@ -23,6 +24,7 @@ const initialState = {
   genders: [],
   petTypes: [],
   locations: [],
+  noticeDetails: null,
   currentPage: 1,
   totalPages: 0,
   limit: 6,
@@ -50,6 +52,9 @@ const noticesSlice = createSlice({
       if (action.payload.locationId === '') {
         state.locations = [];
       }
+    },
+    clearNoticeDetails(state) {
+      state.noticeDetails = null;
     },
   },
   extraReducers: builder => {
@@ -86,9 +91,14 @@ const noticesSlice = createSlice({
       .addCase(fetchLocations.fulfilled, (state, action) => {
         state.locations = action.payload;
       })
-      .addCase(fetchLocations.rejected, handleRejected);
+      .addCase(fetchLocations.rejected, handleRejected)
+
+      .addCase(fetchNoticeById.fulfilled, (state, action) => {
+        state.noticeDetails = action.payload;
+      });
   },
 });
-export const { setFilters, setSearchQuery } = noticesSlice.actions;
+export const { setFilters, setSearchQuery, clearNoticeDetails } =
+  noticesSlice.actions;
 
 export default noticesSlice.reducer;
