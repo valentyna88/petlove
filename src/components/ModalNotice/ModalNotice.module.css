@@ -1,0 +1,154 @@
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 28px;
+}
+.imgBox {
+  position: relative;
+  width: 120px;
+  margin-bottom: 20px;
+}
+img {
+  border-radius: 100px;
+}
+.category {
+  position: absolute;
+  top: 40px;
+  left: 106px;
+  border-radius: 30px;
+  padding: 8px 14px;
+  width: 48px;
+  height: 32px;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  background-color: var(--bg-accent-yellow);
+  color: var(--color-accent);
+}
+.titleBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+}
+.popularityBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+.popularity {
+  font-size: 14px;
+  line-height: 1.43;
+  color: var(--color-text-primary);
+}
+.info {
+  display: flex;
+  gap: 27px;
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+.infoBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.infoTitle {
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--color-gray-light);
+}
+.infoText {
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+}
+.comment {
+  font-size: 14px;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin-bottom: 32px;
+}
+.price {
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--color-text-primary);
+}
+.btnBox {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+.addToBtn,
+.contactBtn {
+  border-radius: 30px;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+}
+.addToBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 31px;
+  color: var(--bg-secondary);
+  background-color: var(--color-accent);
+}
+.icon {
+  stroke: var(--bg-secondary);
+}
+.contactBtn {
+  padding: 12px 37px;
+  background-color: var(--bg-accent-yellow);
+  color: var(--color-accent);
+}
+
+@media screen and (min-width: 768px) {
+  .imgBox {
+    width: 150px;
+    margin-bottom: 16px;
+  }
+  .category {
+    left: 156px;
+    width: 52px;
+    height: 34px;
+    font-size: 14px;
+    line-height: 1.29;
+  }
+  .title {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+  .info {
+    margin-top: 20px;
+  }
+  .price {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+  .addToBtn {
+    padding: 14px 42px;
+  }
+  .contactBtn {
+    padding: 14px 50px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .info {
+    margin-top: 10px;
+  }
+}

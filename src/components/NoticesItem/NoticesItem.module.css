@@ -99,6 +99,9 @@
   height: 46px;
   background-color: var(--bg-accent-yellow);
 }
+.icon {
+  stroke: var(--color-accent);
+}
 
 @media screen and (min-width: 768px) {
   .imgBox {
