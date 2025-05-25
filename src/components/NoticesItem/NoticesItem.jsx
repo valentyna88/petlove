@@ -4,7 +4,7 @@ import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 import sprite from '../../assets/sprite.svg';
 import css from './NoticesItem.module.css';
 
-const NoticesItem = ({ notice, onOpenAttentionModal }) => {
+const NoticesItem = ({ notice, onOpenAttentionModal, onLearnMore }) => {
   const {
     imgURL,
     species,
@@ -33,6 +33,7 @@ const NoticesItem = ({ notice, onOpenAttentionModal }) => {
       onOpenAttentionModal();
       return;
     }
+    onLearnMore(notice._id);
   };
 
   const handleLikeClick = () => {
