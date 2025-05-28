@@ -1,11 +1,24 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 import { formatBirthday } from '../../utils/formatBirthday';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import sprite from '../../assets/sprite.svg';
 import css from './ModalNotice.module.css';
+import { selectFavorites } from '../../redux/favorites/selectors';
+import { useAuth } from '../../hooks/useAuth';
+import {
+  addNoticeToFavorites,
+  removeNoticeFromFavorites,
+} from '../../redux/favorites/operations';
 
-const ModalNotice = ({ notice, isOpen, onClose }) => {
+const ModalNotice = ({ notice, isOpen, onClose, onOpenAttentionModal }) => {
+  const dispatch = useDispatch();
+  const { isLoggedIn } = useAuth();
+  const favorites = useSelector(selectFavorites);
+
   if (!notice) return null;
+
+  const isFavorite = favorites.includes(notice._id);
 
   const {
     imgURL,
@@ -27,6 +40,19 @@ const ModalNotice = ({ notice, isOpen, onClose }) => {
     { label: 'Species', value: capitalizeFirstLetter(species) },
   ];
 
+  const handleFavoriteClick = () => {
+    if (!isLoggedIn) {
+      onOpenAttentionModal();
+      return;
+    }
+    if (isFavorite) {
+      dispatch(removeNoticeFromFavorites(notice._id));
+    } else {
+      dispatch(addNoticeToFavorites(notice._id));
+    }
+  };
+  console.log('Email автора:', notice.user?.email);
+  console.log('notice:', notice);
   return (
     <ModalContainer isOpen={isOpen} onClose={onClose}>
       <div className={css.modalContent}>
@@ -58,15 +84,25 @@ const ModalNotice = ({ notice, isOpen, onClose }) => {
         <p className={css.price}>Price: ${price}</p>
 
         <div className={css.btnBox}>
-          <button type="button" className={css.addToBtn}>
-            Add to
+          <button
+            type="button"
+            className={css.addToBtn}
+            onClick={handleFavoriteClick}
+          >
+            {isFavorite ? 'Remove from' : 'Add to'}
             <svg className={css.icon} width={18} height={18}>
               <use xlinkHref={`${sprite}#icon-heart`} />
             </svg>
           </button>
-          <button type="button" className={css.contactBtn}>
+          <a
+            href={`mailto:${notice.user.email}?subject=${encodeURIComponent(
+              `Interested in your pet: "${notice.title}"`
+            )}`}
+            className={css.contactBtn}
+            target="_blank"
+          >
             Contact
-          </button>
+          </a>
         </div>
       </div>
     </ModalContainer>
