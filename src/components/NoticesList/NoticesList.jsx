@@ -80,6 +80,7 @@ const NoticesList = () => {
         isOpen={isNoticeModalOpen}
         notice={noticeDetails}
         onClose={handleCloseNoticeModal}
+        onOpenAttentionModal={handleOpenAttentionModal}
       />
     </ul>
   );

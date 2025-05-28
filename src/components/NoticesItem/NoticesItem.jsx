@@ -3,8 +3,19 @@ import { formatBirthday } from '../../utils/formatBirthday';
 import { capitalizeFirstLetter } from '../../utils/capitalizeFirstLetter';
 import sprite from '../../assets/sprite.svg';
 import css from './NoticesItem.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFavorites } from '../../redux/favorites/selectors';
+import {
+  addNoticeToFavorites,
+  removeNoticeFromFavorites,
+} from '../../redux/favorites/operations';
 
 const NoticesItem = ({ notice, onOpenAttentionModal, onLearnMore }) => {
+  const dispatch = useDispatch();
+  const { isLoggedIn } = useAuth();
+  const favorites = useSelector(selectFavorites);
+  const isFavorite = favorites.includes(notice._id);
+
   const {
     imgURL,
     species,
@@ -26,8 +37,6 @@ const NoticesItem = ({ notice, onOpenAttentionModal, onLearnMore }) => {
     { label: 'Category', value: capitalizeFirstLetter(category) },
   ];
 
-  const { isLoggedIn } = useAuth();
-
   const handleLearnMore = () => {
     if (!isLoggedIn) {
       onOpenAttentionModal();
@@ -36,10 +45,15 @@ const NoticesItem = ({ notice, onOpenAttentionModal, onLearnMore }) => {
     onLearnMore(notice._id);
   };
 
-  const handleLikeClick = () => {
+  const handleFavoriteClick = () => {
     if (!isLoggedIn) {
       onOpenAttentionModal();
       return;
+    }
+    if (isFavorite) {
+      dispatch(removeNoticeFromFavorites(notice._id));
+    } else {
+      dispatch(addNoticeToFavorites(notice._id));
     }
   };
 
@@ -80,9 +94,18 @@ const NoticesItem = ({ notice, onOpenAttentionModal, onLearnMore }) => {
         >
           Learn more
         </button>
-        <button type="button" className={css.likeBtn} onClick={handleLikeClick}>
+        <button
+          type="button"
+          className={css.likeBtn}
+          onClick={handleFavoriteClick}
+          aria-label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+        >
           <svg className={css.icon} width={18} height={18}>
-            <use xlinkHref={`${sprite}#icon-heart`} />
+            <use
+              xlinkHref={`${sprite}${
+                isFavorite ? '#icon-trash' : '#icon-heart'
+              }`}
+            />
           </svg>
         </button>
       </div>
