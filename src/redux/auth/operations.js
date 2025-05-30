@@ -78,3 +78,26 @@ export const logoutUser = createAsyncThunk(
     }
   }
 );
+
+export const editUser = createAsyncThunk(
+  'auth/edit',
+  async (credentials, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+    if (!token) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+
+    try {
+      setToken(token);
+      const { data } = await authInstance.patch(
+        '/users/current/edit',
+        credentials
+      );
+      return data;
+    } catch (e) {
+      toast.error(e.response?.data?.message || 'Error, Invalid data');
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
