@@ -8,6 +8,12 @@
   border-radius: 50%;
   background-color: var(--bg-accent-yellow);
 }
+.userLink svg {
+  fill: var(--color-accent);
+  stroke-width: 2px;
+  stroke: var(--color-accent);
+}
+
 .userName {
   display: block !important;
   color: var(--color-text-dark);
