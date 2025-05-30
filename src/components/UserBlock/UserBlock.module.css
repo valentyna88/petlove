@@ -1,0 +1,68 @@
+.userAvatarBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.userAvatarWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  width: 94px;
+  height: 94px;
+  background-color: var(--bg-accent-yellow);
+}
+.userAvatarWrapper svg {
+  fill: var(--color-accent);
+  stroke-width: 2px;
+}
+.uploadPhotoBtn {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--color-text-dark);
+  transition: var(--transition);
+
+  &:hover {
+    color: var(--color-accent);
+  }
+}
+.myInfoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 28px;
+  margin-bottom: 40px;
+}
+.myInfoTitle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: left;
+  margin-bottom: 20px;
+  color: var(--color-text-primary);
+}
+.myInfoList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.myInfoList li {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  height: 42px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.03em;
+  border-radius: 30px;
+  border: 1px solid var(--color-gray-border);
+  color: var(--color-text-dark);
+}
