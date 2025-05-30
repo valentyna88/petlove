@@ -33,3 +33,23 @@ export const loginSchema = yup.object().shape({
     .min(7, 'Password must be at least 7 characters')
     .required('Password is required'),
 });
+
+export const editUserSchema = yup.object().shape({
+  name: yup.string().required('Name is required'),
+  email: yup
+    .string()
+    .matches(numberRegex, 'Invalid email format')
+    .email('Invalid email')
+    .required('Email is required'),
+  avatar: yup
+    .string()
+    .matches(
+      /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
+      'Invalid avatar URL'
+    )
+    .required('Avatar URL is required'),
+  phone: yup
+    .string()
+    .matches(/^\+38\d{10}$/, 'Phone must be in format +38XXXXXXXXXX')
+    .required('Phone number is required'),
+});
