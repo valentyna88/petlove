@@ -38,7 +38,8 @@ export const loginUser = createAsyncThunk(
       const { data } = await authInstance.post('/users/signin', credentials);
       console.log('LOGIN DATA:', data);
       setToken(data.token);
-      return data;
+      const { data: userData } = await authInstance.get('/users/current/full');
+      return { ...userData, token: data.token };
     } catch (e) {
       toast.error(e.response?.data?.message || 'Error, Invalid data');
       return thunkAPI.rejectWithValue(e.message);
