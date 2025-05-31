@@ -8,13 +8,13 @@ const UserBar = ({ showName }) => {
   const location = useLocation();
   const isHomePage = location.pathname === '/home';
 
-  const user = useAuth();
+  const { user } = useAuth();
 
   return (
     <>
       <Link to="/profile" className={css.userLink}>
-        {user?.user?.avatar ? (
-          <img src={user.avatar} alt={`Avatar of ${user.user.name}`} />
+        {user?.avatar ? (
+          <img src={user.avatar} alt={`Avatar of ${user.name}`} />
         ) : (
           <svg width={20} height={20}>
             <use href={`${sprite}#icon-user`} />
@@ -28,7 +28,7 @@ const UserBar = ({ showName }) => {
             [css.userNameHome]: isHomePage,
           })}
         >
-          {user.user.name}
+          {user.name}
         </p>
       )}
     </>
