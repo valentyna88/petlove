@@ -19,8 +19,11 @@
   align-items: center;
   justify-content: center;
   border-radius: 100px;
-  min-width: 80px;
-  min-height: 80px;
+  min-width: 94px;
+  min-height: 94px;
+  width: 94px;
+  height: 94px;
+  overflow: hidden;
   background-color: var(--bg-accent-yellow);
 }
 .userIcon {
@@ -113,9 +116,9 @@
   font-weight: 700;
   font-size: 14px;
   letter-spacing: -0.03em;
-  transition: var(--transition);
   color: var(--bg-secondary);
   background-color: var(--color-accent);
+  transition: var(--transition);
 
   &:hover {
     color: var(--color-accent);
@@ -142,4 +145,10 @@
   letter-spacing: -0.03em;
   align-self: flex-start;
   color: var(--color-error);
+}
+.userAvatarWrapper img {
+  min-width: 100%;
+  min-height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
