@@ -4,8 +4,10 @@ import { useAuth } from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { editUserSchema } from '../../utils/validationSchemas';
+import { uploadImage } from '../../utils/uploadImage';
 import { editUser } from '../../redux/auth/operations';
 import ModalContainer from '../ModalContainer/ModalContainer';
+import toast from 'react-hot-toast';
 import sprite from '../../assets/sprite.svg';
 import css from './ModalEditUser.module.css';
 
@@ -27,17 +29,36 @@ const ModalEditUser = ({ isOpen, onClose }) => {
     register,
     handleSubmit,
     reset,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(editUserSchema),
     defaultValues: formDefaults,
   });
-
+  const avatarPreview = watch('avatar');
   useEffect(() => {
     if (isOpen) {
       reset(formDefaults);
     }
   }, [isOpen, reset, formDefaults]);
+
+  const handleAvatarFile = async e => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    try {
+      const url = await uploadImage(
+        file,
+        import.meta.env.VITE_CLOUDINARY_BASE_URL,
+        import.meta.env.VITE_CLOUDINARY_CLOUD_NAME,
+        import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET
+      );
+      setValue('avatar', url);
+    } catch (err) {
+      toast.error(err.message || 'Failed to upload image. Please try again.');
+    }
+  };
 
   const onSubmit = async data => {
     await dispatch(editUser(data)).unwrap();
@@ -49,7 +70,9 @@ const ModalEditUser = ({ isOpen, onClose }) => {
       <div className={css.modalContent}>
         <h2 className={css.title}>Edit information</h2>
         <div className={css.userAvatarWrapper}>
-          {user?.avatar ? (
+          {avatarPreview && avatarPreview !== 'Avatar URL' ? (
+            <img src={avatarPreview} alt="Preview avatar" />
+          ) : user?.avatar ? (
             <img src={user.avatar} alt="User avatar" />
           ) : (
             <svg className={css.userIcon}>
@@ -72,6 +95,8 @@ const ModalEditUser = ({ isOpen, onClose }) => {
               <input
                 type="file"
                 name="avatarFile"
+                accept="image/*"
+                onChange={handleAvatarFile}
                 className={css.avatarFileInput}
               />
               <svg width={18} height={18} className={css.uploadIcon}>
