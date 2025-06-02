@@ -3,3 +3,9 @@
   border-radius: 30px;
   background-color: var(--bg-secondary);
 }
+
+@media screen and (min-width: 768px) {
+  .userCard {
+    padding: 40px;
+  }
+}

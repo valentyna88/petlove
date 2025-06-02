@@ -73,3 +73,22 @@
   border: 1px solid var(--color-gray-border);
   color: var(--color-text-dark);
 }
+
+@media screen and (min-width: 768px) {
+  .myInfoTitle {
+    font-size: 18px;
+    line-height: 1.33;
+  }
+  .myInfoList {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .myInfoList li {
+    width: 305px;
+    height: 52px;
+    padding: 16px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
