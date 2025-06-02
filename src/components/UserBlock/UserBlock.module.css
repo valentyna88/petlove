@@ -92,3 +92,13 @@
     line-height: 1.25;
   }
 }
+
+@media screen and (min-width: 1280px) {
+  .userAvatarWrapper {
+    width: 110px;
+    height: 110px;
+  }
+  .myInfoList li {
+    width: 100%;
+  }
+}
