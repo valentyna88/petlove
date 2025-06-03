@@ -2,7 +2,7 @@ import { useAuth } from '../../hooks/useAuth';
 import sprite from '../../assets/sprite.svg';
 import css from './UserBlock.module.css';
 
-const UserBlock = () => {
+const UserBlock = ({ onUploadPhotoClick }) => {
   const { user } = useAuth();
   return (
     <>
@@ -17,7 +17,11 @@ const UserBlock = () => {
           )}
         </div>
         {!user.avatar && (
-          <button className={css.uploadPhotoBtn} type="button">
+          <button
+            className={css.uploadPhotoBtn}
+            type="button"
+            onClick={onUploadPhotoClick}
+          >
             Upload photo
           </button>
         )}
