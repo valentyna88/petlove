@@ -1,13 +1,7 @@
-import { useState } from 'react';
-import ModalEditUser from '../ModalEditUser/ModalEditUser';
 import sprite from '../../assets/sprite.svg';
 import css from './EditUserBtn.module.css';
 
-const EditUserBtn = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+const EditUserBtn = ({ onEditClick }) => {
   return (
     <>
       <div className={css.userBoxWrapper}>
@@ -18,13 +12,12 @@ const EditUserBtn = () => {
           </svg>
         </div>
 
-        <button type="button" className={css.editBtn} onClick={openModal}>
+        <button type="button" className={css.editBtn} onClick={onEditClick}>
           <svg className={css.icon} width={18} height={18}>
             <use xlinkHref={`${sprite}#icon-edit`} />
           </svg>
         </button>
       </div>
-      <ModalEditUser isOpen={isModalOpen} onClose={closeModal} />
     </>
   );
 };
