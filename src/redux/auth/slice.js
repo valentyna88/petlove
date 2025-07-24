@@ -64,6 +64,7 @@ const authSlice = createSlice({
         state.user.email = action.payload.email;
         state.user.phone = action.payload.phone;
         state.user.avatar = action.payload.avatar;
+        state.user = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })

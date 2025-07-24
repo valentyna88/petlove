@@ -3,14 +3,14 @@ import {
   selectUser,
   selectIsLoggedIn,
   selectIsRefreshing,
-  selectFavoritesNotices,
 } from '../redux/auth/selectors';
+import { selectFavorites } from '../redux/favorites/selectors';
 
 export const useAuth = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
   const user = useSelector(selectUser);
-  const favoritesNotices = useSelector(selectFavoritesNotices);
+  const favoritesNotices = useSelector(selectFavorites);
 
   return {
     isLoggedIn,
