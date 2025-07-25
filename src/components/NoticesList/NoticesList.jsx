@@ -1,11 +1,7 @@
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectNoticeDetails,
-  selectNotices,
-} from '../../redux/notices/selectors';
-import { fetchNoticeById } from '../../redux/notices/operations';
-import { clearNoticeDetails } from '../../redux/notices/slice';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectNotices } from '../../redux/notices/selectors';
+import { useNoticeModal } from '../../hooks/useNoticeModal';
 import NoticesItem from '../NoticesItem/NoticesItem';
 import ModalAttention from '../ModalAttention/ModalAttention';
 import ModalNotice from '../ModalNotice/ModalNotice';
@@ -13,47 +9,17 @@ import css from './NoticesList.module.css';
 
 const NoticesList = () => {
   const notices = useSelector(selectNotices);
-  const noticeDetails = useSelector(selectNoticeDetails);
-  const [isAttentionModalOpen, setAttentionModalOpen] = useState(false);
-  const [isNoticeModalOpen, setNoticeModalOpen] = useState(false);
-  const [pendingNoticeId, setPendingNoticeId] = useState(null);
-  const dispatch = useDispatch();
 
+  const [isAttentionModalOpen, setAttentionModalOpen] = useState(false);
   const handleOpenAttentionModal = () => setAttentionModalOpen(true);
   const handleCloseAttentionModal = () => setAttentionModalOpen(false);
 
-  const handleLearnMore = noticeId => {
-    setPendingNoticeId(noticeId);
-  };
-
-  useEffect(() => {
-    if (pendingNoticeId) {
-      dispatch(fetchNoticeById(pendingNoticeId));
-    }
-  }, [pendingNoticeId, dispatch]);
-
-  useEffect(() => {
-    dispatch(clearNoticeDetails());
-    setNoticeModalOpen(false);
-  }, [dispatch]);
-
-  useEffect(() => {
-    if (pendingNoticeId) {
-      dispatch(fetchNoticeById(pendingNoticeId));
-    }
-  }, [pendingNoticeId, dispatch]);
-
-  useEffect(() => {
-    if (noticeDetails && pendingNoticeId) {
-      setNoticeModalOpen(true);
-      setPendingNoticeId(null);
-    }
-  }, [noticeDetails, pendingNoticeId]);
-
-  const handleCloseNoticeModal = () => {
-    setNoticeModalOpen(false);
-    dispatch(clearNoticeDetails());
-  };
+  const {
+    isNoticeModalOpen,
+    noticeDetails,
+    openNoticeModal,
+    closeNoticeModal,
+  } = useNoticeModal();
 
   return (
     <ul className={css.noticesList}>
@@ -67,7 +33,7 @@ const NoticesList = () => {
             <NoticesItem
               notice={notice}
               onOpenAttentionModal={handleOpenAttentionModal}
-              onLearnMore={handleLearnMore}
+              onLearnMore={openNoticeModal}
             />
           </li>
         ))
@@ -79,7 +45,7 @@ const NoticesList = () => {
       <ModalNotice
         isOpen={isNoticeModalOpen}
         notice={noticeDetails}
-        onClose={handleCloseNoticeModal}
+        onClose={closeNoticeModal}
         onOpenAttentionModal={handleOpenAttentionModal}
       />
     </ul>
